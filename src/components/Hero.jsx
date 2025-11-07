@@ -68,7 +68,7 @@ export default function Hero() {
               LinkedIn
             </a>
             <a
-              href="/Rizwan_resume.pdf"
+              href="/src/assets/Rizwan-Resume.pdf"
               download
               className="px-6 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-400"
             >
