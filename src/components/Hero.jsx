@@ -8,13 +8,13 @@ export default function Hero() {
     <section
       id="home"
       className="relative flex flex-col justify-center items-center min-h-[100vh] overflow-hidden bg-gradient-to-br from-black via-gray-900 to-purple-950"
+      aria-label="Hero section introducing Rijwan Husain"
     >
       {/* Navbar */}
       <Navbar />
 
       {/* Hero Content */}
       <div className="relative z-20 mt-20 px-6 md:px-16 flex flex-col md:flex-row items-center justify-center gap-12 text-center md:text-left">
-        
         {/* Left Side - Text Content */}
         <motion.div
           initial={{ opacity: 0, x: -60 }}
@@ -37,14 +37,14 @@ export default function Hero() {
               ]}
               typeSpeed={70}
               backSpeed={40}
-              backDelay={1000}   // shorter pause before continuing typing
+              backDelay={1000} // shorter pause before continuing typing
               smartBackspace
               loop
             />
           </div>
 
           {/* Tagline */}
-          <p className="text-gray-400 text-lg mb-6 leading-relaxed">
+          <p className="text-gray-400 text-lg  mb-6 leading-relaxed">
             Turning ideas into functional, beautiful, and user-friendly digital
             experiences.
           </p>
@@ -55,7 +55,7 @@ export default function Hero() {
               href="https://github.com/rijwanofficials"
               target="_blank"
               rel="noreferrer"
-              className="px-6 py-2 bg-purple-700 hover:bg-purple-500 text-white rounded-lg transition"
+              className="px-6 py-2 bg-purple-700 hover:bg-purple-500 text-white rounded-lg transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-400"
             >
               GitHub
             </a>
@@ -63,15 +63,28 @@ export default function Hero() {
               href="https://www.linkedin.com/in/rijwanln/"
               target="_blank"
               rel="noreferrer"
-              className="px-6 py-2 bg-gray-800 hover:bg-gray-700 text-gray-200 rounded-lg transition"
+              className="px-6 py-2 bg-gray-800 hover:bg-gray-700 text-gray-200 rounded-lg transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-400"
             >
               LinkedIn
+            </a>
+            <a
+              href="/Rizwan_resume.pdf"
+              download
+              className="px-6 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            >
+              Download Resume
             </a>
           </div>
 
           {/* Scroll Down Link */}
           <a
             href="#projects"
+            onClick={(e) => {
+              e.preventDefault();
+              document
+                .querySelector("#projects")
+                .scrollIntoView({ behavior: "smooth" });
+            }}
             className="mt-10 inline-block text-purple-400 hover:text-purple-300 transition text-lg"
           >
             ↓ View My Projects
@@ -87,7 +100,8 @@ export default function Hero() {
         >
           <img
             src={profile}
-            alt="Rizwan"
+            alt="Profile picture of Rijwan Husain"
+            loading="lazy"
             className="w-64 h-64 md:w-80 md:h-80 rounded-full border-4 border-purple-500 shadow-2xl object-cover"
           />
         </motion.div>

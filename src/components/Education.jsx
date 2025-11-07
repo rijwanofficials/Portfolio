@@ -2,8 +2,8 @@ import { motion } from "framer-motion";
 
 const education = [
   { degree: "Bachelor of Technology, Electronics & Communication Engineering", institution: "Ajay Kumar Garg Engineering College", duration: "2021 - 2025" },
-  { degree: "Intermediate", institution: "Modern Science College", duration: "2019" },
-  { degree: "High School", institution: "Modern Science College", duration: "2018" }
+  { degree: "Intermediate", institution: "Modern Science School", duration: "2019" },
+  { degree: "High School", institution: "Modern Science School", duration: "2018" }
 ];
 
 export default function Education() {

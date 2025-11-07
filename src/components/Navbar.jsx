@@ -10,7 +10,7 @@ const navLinks = [
 
 export default function Navbar() {
   return (
-    <nav className="absolute top-8 w-full flex justify-center z-30">
+    <nav className="fixed top-8 w-full flex justify-center z-30">
       <div className="bg-[#181C2A] bg-opacity-80 rounded-2xl px-8 py-3 flex gap-4 shadow-lg">
         {navLinks.map((link) => (
           <a
