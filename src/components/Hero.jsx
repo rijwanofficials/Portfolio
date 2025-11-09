@@ -14,7 +14,7 @@ export default function Hero() {
       <Navbar />
 
       {/* Hero Content */}
-      <div className="relative z-20 mt-20 px-6 md:px-16 flex flex-col md:flex-row items-center justify-center gap-12 text-center md:text-left">
+      <div className="relative z-20 mt-20 px-4 md:px-10 flex flex-col md:flex-row items-center justify-between gap-12 text-center md:text-left w-full max-w-7xl mx-auto">
         {/* Left Side - Text Content */}
         <motion.div
           initial={{ opacity: 0, x: -60 }}
@@ -27,7 +27,7 @@ export default function Hero() {
             Hi, I'm <span className="text-purple-400">Rijwan Husain</span>
           </h1>
 
-          {/* Typing Animation (natural pause at "React") */}
+          {/* Typing Animation */}
           <div className="text-2xl md:text-3xl mb-6 min-h-[2.5rem] font-semibold">
             <ReactTyped
               strings={[
@@ -37,14 +37,14 @@ export default function Hero() {
               ]}
               typeSpeed={70}
               backSpeed={40}
-              backDelay={1000} // shorter pause before continuing typing
+              backDelay={1000}
               smartBackspace
               loop
             />
           </div>
 
           {/* Tagline */}
-          <p className="text-gray-400 text-lg  mb-6 leading-relaxed">
+          <p className="text-gray-400 text-lg mb-6 leading-relaxed">
             Turning ideas into functional, beautiful, and user-friendly digital
             experiences.
           </p>
