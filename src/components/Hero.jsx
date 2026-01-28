@@ -1,109 +1,214 @@
-import Navbar from "./Navbar";
-import { ReactTyped } from "react-typed";
 import { motion } from "framer-motion";
-import profile from "../assets/profile.jpeg"; // 🔹 Replace with your actual image
+import {
+  Github,
+  Linkedin,
+  Mail,
+  ArrowDown,
+  Code,
+  Palette,
+  Sparkles,
+} from "lucide-react";
 
-export default function Hero() {
+export function Hero() {
+  const scrollToSection = (id) => {
+    const el = document.getElementById(id);
+    el?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <section
       id="home"
-      className="relative flex flex-col justify-center items-center min-h-[100vh] overflow-hidden bg-gradient-to-br from-black via-gray-900 to-purple-950"
-      aria-label="Hero section introducing Rijwan Husain"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-black"
     >
-      {/* Navbar */}
-      <Navbar />
-
-      {/* Hero Content */}
-      <div className="relative z-20 mt-20 px-4 md:px-10 flex flex-col md:flex-row items-center justify-between gap-12 text-center md:text-left w-full max-w-7xl mx-auto">
-        {/* Left Side - Text Content */}
+      {/* Animated background */}
+      <div className="absolute inset-0 overflow-hidden">
         <motion.div
-          initial={{ opacity: 0, x: -60 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1 }}
-          className="max-w-xl"
-        >
-          {/* Name */}
-          <h1 className="text-5xl md:text-6xl font-extrabold text-white mb-4 leading-tight">
-            Hi, I'm <span className="text-purple-400">Rijwan Husain</span>
-          </h1>
+          className="absolute -top-1/2 -left-1/2 w-[800px] h-[800px] bg-blue-500/20 rounded-full blur-3xl"
+          animate={{ x: [0, 100, 0], y: [0, 50, 0], scale: [1, 1.2, 1] }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+        />
 
-          {/* Typing Animation */}
-          <div className="text-2xl md:text-3xl mb-6 min-h-[2.5rem] font-semibold">
-            <ReactTyped
-              strings={[
-                " <span class='text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-blue-400'>React</span>",
-                " <span class='text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-blue-400'>React & Node.js Developer</span>",
-                " <span class='text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-blue-400'>UI/UX Designer</span>",
-              ]}
-              typeSpeed={70}
-              backSpeed={40}
-              backDelay={1000}
-              smartBackspace
-              loop
-            />
-          </div>
+        <motion.div
+          className="absolute -bottom-1/2 -right-1/2 w-[800px] h-[800px] bg-purple-500/20 rounded-full blur-3xl"
+          animate={{ x: [0, -100, 0], y: [0, -50, 0], scale: [1, 1.1, 1] }}
+          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+        />
 
-          {/* Tagline */}
-          <p className="text-gray-400 text-lg mb-6 leading-relaxed">
-            Turning ideas into functional, beautiful, and user-friendly digital
-            experiences.
-          </p>
+        <motion.div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-3xl"
+          animate={{ scale: [1, 1.3, 1], rotate: [0, 180, 360] }}
+          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+        />
 
-          {/* Buttons */}
-          <div className="flex justify-center md:justify-start gap-4">
-            <a
-              href="https://github.com/rijwanofficials"
-              target="_blank"
-              rel="noreferrer"
-              className="px-6 py-2 bg-purple-700 hover:bg-purple-500 text-white rounded-lg transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-400"
-            >
-              GitHub
-            </a>
-            <a
-              href="https://www.linkedin.com/in/rijwanln/"
-              target="_blank"
-              rel="noreferrer"
-              className="px-6 py-2 bg-gray-800 hover:bg-gray-700 text-gray-200 rounded-lg transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-400"
-            >
-              LinkedIn
-            </a>
-            <a
-              href="/src/assets/Rizwan-Resume.pdf"
-              download
-              className="px-6 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-400"
-            >
-              Download Resume
-            </a>
-          </div>
-
-          {/* Scroll Down Link */}
-          <a
-            href="#projects"
-            onClick={(e) => {
-              e.preventDefault();
-              document
-                .querySelector("#projects")
-                .scrollIntoView({ behavior: "smooth" });
+        {/* Particles */}
+        {[...Array(20)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-white/30 rounded-full"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
             }}
-            className="mt-10 inline-block text-purple-400 hover:text-purple-300 transition text-lg"
-          >
-            ↓ View My Projects
-          </a>
-        </motion.div>
-
-        {/* Right Side - Profile Image */}
-        <motion.div
-          initial={{ opacity: 0, x: 60 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1 }}
-          className="flex-shrink-0"
-        >
-          <img
-            src={profile}
-            alt="Profile picture of Rijwan Husain"
-            loading="lazy"
-            className="w-64 h-64 md:w-80 md:h-80 rounded-full border-4 border-purple-500 shadow-2xl object-cover"
+            animate={{ y: [0, -30, 0], opacity: [0.2, 1, 0.2] }}
+            transition={{
+              duration: 3 + Math.random() * 2,
+              repeat: Infinity,
+              delay: Math.random() * 2,
+            }}
           />
+        ))}
+      </div>
+
+      <div className="container mx-auto px-6 z-10 pt-20">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* LEFT */}
+          <div className="text-center lg:text-left">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="mb-6"
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 mb-6">
+                <Sparkles size={16} className="text-blue-400" />
+                <span className="text-sm text-blue-300">
+                  Available for freelance work
+                </span>
+              </div>
+
+              <p className="text-2xl text-slate-400 mb-2">Hello, this is</p>
+
+              <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-4">
+                Rijwan
+              </h1>
+
+              <p className="text-3xl md:text-4xl lg:text-5xl leading-tight">
+                <span className="text-white">And I'm a </span>
+                <span className="bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-transparent">
+                  React{" "}
+                </span>
+                <span className="text-white">& </span>
+                <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                  Node.js{" "}
+                </span>
+                <span className="bg-gradient-to-r from-pink-400 to-red-400 bg-clip-text text-transparent">
+                  Developer
+                </span>
+              </p>
+            </motion.div>
+
+            <motion.p
+              className="text-xl md:text-2xl text-slate-300 mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              I craft seamless digital experiences by merging{" "}
+              <span className="text-blue-400 font-semibold">robust code</span>{" "}
+              with{" "}
+              <span className="text-purple-400 font-semibold">
+                beautiful design
+              </span>
+            </motion.p>
+
+            {/* Buttons */}
+            <motion.div
+              className="flex gap-4 justify-center lg:justify-start mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              <button
+                onClick={() => scrollToSection("projects")}
+                className="px-6 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg shadow-blue-500/50 hover:opacity-90"
+              >
+                View My Work
+              </button>
+
+              <button
+                onClick={() => scrollToSection("contact")}
+                className="px-6 py-3 rounded-lg border border-slate-600 text-white hover:bg-slate-800/50"
+              >
+                Get In Touch
+              </button>
+            </motion.div>
+
+            {/* Socials */}
+            <motion.div
+              className="flex gap-4 justify-center lg:justify-start"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6 }}
+            >
+              {[Github, Linkedin, Mail].map((Icon, i) => (
+                <a
+                  key={i}
+                  href="#"
+                  className="w-12 h-12 flex items-center justify-center rounded-full bg-slate-800/50 text-slate-400 hover:text-white border border-slate-700"
+                >
+                  <Icon size={20} />
+                </a>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* RIGHT */}
+          <motion.div
+            className="relative hidden lg:block"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          >
+            <div className="relative w-full aspect-square max-w-md mx-auto">
+              <motion.div
+                className="absolute inset-0 rounded-full border-2 border-blue-500/30"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              />
+
+              <motion.div
+                className="absolute inset-8 rounded-full border-2 border-purple-500/30"
+                animate={{ rotate: -360 }}
+                transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+              />
+
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="relative">
+                  <motion.div
+                    className="absolute -left-20 top-0 p-4 rounded-2xl bg-blue-500/20 border border-blue-400/30"
+                    animate={{ y: [0, -10, 0] }}
+                    transition={{ duration: 3, repeat: Infinity }}
+                  >
+                    <Code size={32} className="text-blue-400" />
+                  </motion.div>
+
+                  <motion.div
+                    className="absolute -right-20 bottom-0 p-4 rounded-2xl bg-purple-500/20 border border-purple-400/30"
+                    animate={{ y: [0, 10, 0] }}
+                    transition={{ duration: 3, repeat: Infinity, delay: 1.5 }}
+                  >
+                    <Palette size={32} className="text-purple-400" />
+                  </motion.div>
+
+                  <div className="w-32 h-32 rounded-full bg-gradient-to-br from-blue-500/40 via-purple-500/40 to-pink-500/40 blur-2xl" />
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Scroll Down */}
+        <motion.div
+          className="absolute bottom-8 left-1/2 -translate-x-1/2"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+        >
+          <button
+            onClick={() => scrollToSection("about")}
+            className="text-slate-400 hover:text-white"
+          >
+            <ArrowDown size={32} />
+          </button>
         </motion.div>
       </div>
     </section>
